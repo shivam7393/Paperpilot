@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaperPilot AI | India's Intelligent Research Assistant</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#323dd6;--blue-dark:#1722be;--blue-light:#edeeff;
+  --ink:#0a0c14;--ink2:#18181b;--ink3:#3f3f46;--ink4:#71717a;--ink5:#a1a1aa;
+  --border:#e4e4e7;--border2:#d4d4d8;
+  --bg:#ffffff;--bg2:#f9fafb;--bg3:#f4f4f5;
+  --green:#16a34a;--red:#dc2626;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--ink2);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 60px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-mark{width:28px;height:28px;background:var(--blue);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.logo-mark svg{width:16px;height:16px;fill:white}
+.logo-name{font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink2);font-weight:400}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{font-size:14px;color:var(--ink3);text-decoration:none;padding:6px 12px;border-radius:8px;font-weight:500;transition:background .15s,color .15s}
+.nav-links a:hover{background:var(--bg3);color:var(--ink2)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-ghost{font-size:14px;font-weight:500;color:var(--ink2);background:white;border:1px solid var(--border2);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:all .15s;text-decoration:none}
+.btn-ghost:hover{border-color:var(--ink4)}
+.btn-primary{font-size:14px;font-weight:500;color:white;background:var(--blue);border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn-primary:hover{background:var(--blue-dark)}
+
+/* HERO */
+.hero{padding:120px 60px 80px;max-width:1200px;margin:0 auto;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--blue-light);border:1px solid #cccff3;border-radius:40px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.5px;text-transform:uppercase;margin-bottom:28px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero h1{font-family:'Instrument Serif',serif;font-size:64px;line-height:1.05;letter-spacing:-2px;color:var(--ink2);margin-bottom:20px;font-weight:400}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:18px;color:var(--ink3);line-height:1.6;max-width:560px;margin:0 auto 36px;font-weight:400}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px}
+.btn-hero{font-size:16px;font-weight:600;color:white;background:var(--blue);border:2px solid rgba(255,255,255,.15);padding:13px 28px;border-radius:12px;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 0 4px rgba(50,61,214,.1)}
+.btn-hero:hover{background:var(--blue-dark)}
+.btn-hero span{font-size:14px;font-weight:400;opacity:.8}
+.hero-proof{font-size:13px;color:var(--ink5);display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-proof strong{color:var(--ink3)}
+
+/* AVATARS */
+.avatar-stack{display:flex;align-items:center}
+.avatar{width:28px;height:28px;border-radius:50%;border:2px solid white;margin-left:-8px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white}
+.avatar:first-child{margin-left:0}
+.avatar:nth-child(2){background:#059669}
+.avatar:nth-child(3){background:#7c3aed}
+
+/* HERO APP MOCKUP */
+.hero-mockup{max-width:900px;margin:60px auto 0;background:white;border-radius:16px;box-shadow:0 12px 60px rgba(0,0,0,.1),0 0 0 1px rgba(0,0,0,.06);overflow:hidden;text-align:left}
+.mockup-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:6px}
+.dot{width:12px;height:12px;border-radius:50%}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.mockup-title{flex:1;text-align:center;font-size:12px;color:var(--ink5);font-weight:500}
+.mockup-body{display:grid;grid-template-columns:260px 1fr 260px;min-height:360px}
+.mockup-sidebar{background:white;border-right:1px solid var(--border);padding:16px;display:flex;flex-direction:column;gap:12px}
+.mockup-sidebar-title{font-size:12px;font-weight:700;color:var(--ink2)}
+.sidebar-search{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:7px 10px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink5)}
+.sidebar-tabs{display:flex;gap:12px;font-size:11px}
+.sidebar-tab-active{font-weight:700;color:var(--ink2);border-bottom:1.5px solid var(--ink2);padding-bottom:2px}
+.sidebar-tab{color:var(--ink5)}
+.sidebar-paper{padding:10px 0;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+.paper-meta{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--ink5)}
+.paper-badge{background:var(--bg3);border-radius:9px;padding:1px 6px;font-size:8px;font-weight:600}
+.paper-title{font-size:9.5px;font-weight:600;color:var(--ink2);line-height:1.4}
+.paper-authors{font-size:9px;color:var(--ink5)}
+.paper-journal{font-size:9px;color:var(--green);font-weight:500}
+.paper-actions{display:flex;gap:10px;font-size:9px;color:var(--ink2);font-weight:500;margin-top:4px}
+.mockup-main{padding:24px 40px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.mockup-main h2{font-size:22px;font-weight:700;color:var(--ink2)}
+.mockup-text{font-size:12.5px;line-height:1.85;color:var(--ink2)}
+.highlight-text{background:rgba(254,240,138,.55);border-bottom:1.5px solid rgba(202,138,4,.4);padding:0 2px 1px;border-radius:2px}
+.cite-link{color:#2563eb;cursor:pointer;font-variant-numeric:tabular-nums}
+.mockup-toolbar{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);font-size:11px;color:var(--ink4)}
+.toolbar-sep{width:1px;height:14px;background:var(--border)}
+.mockup-right{background:white;border-left:1px solid var(--border);display:flex;flex-direction:column}
+.chat-header{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border)}
+.chat-title{font-size:12px;font-weight:600;flex:1;color:var(--ink2)}
+.chat-msgs{flex:1;padding:10px 14px;display:flex;flex-direction:column;gap:8px;min-height:100px}
+.chat-bubble-ai{background:var(--bg2);border-radius:10px 10px 10px 2px;padding:10px 12px;font-size:11px;line-height:1.65;color:var(--ink2);max-width:95%}
+.chat-bubble-user{background:var(--blue);border-radius:10px 10px 2px 10px;padding:10px 12px;font-size:11px;line-height:1.65;color:white;max-width:85%;align-self:flex-end}
+.chat-input-area{padding:10px 14px;border-top:1px solid var(--border)}
+.chat-input-box{border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-size:11px;color:var(--ink5);display:flex;justify-content:space-between;align-items:flex-end}
+.chat-pills{display:flex;gap:4px;padding:4px 14px 6px;flex-wrap:wrap}
+.pill{background:white;border:1px solid var(--border);border-radius:10px;padding:2px 8px;font-size:10px;color:var(--ink2);font-weight:500}
+
+/* TRUST BAR */
+.trust-bar{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 60px}
+.trust-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:60px}
+.trust-label{font-size:13px;color:var(--ink4);white-space:nowrap;font-weight:500}
+.trust-logos{display:flex;align-items:center;gap:40px;flex:1;overflow:hidden}
+.trust-logo{font-size:13px;font-weight:700;color:var(--ink5);letter-spacing:.5px;white-space:nowrap}
+
+/* SECTIONS */
+.section{padding:100px 60px;max-width:1200px;margin:0 auto}
+.section-wrap{padding:100px 0}
+.section-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.section-title{font-family:'Instrument Serif',serif;font-size:44px;line-height:1.15;color:var(--ink2);font-weight:400;letter-spacing:-1px;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--ink3);line-height:1.6;max-width:520px}
+
+/* HOW IT WORKS */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.step-card{background:white;border:1px solid var(--border);border-radius:14px;padding:32px;transition:border-color .2s,box-shadow .2s}
+.step-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(50,61,214,.08)}
+.step-num{font-family:'Instrument Serif',serif;font-size:48px;color:var(--border2);line-height:1;margin-bottom:20px}
+.step-title{font-size:17px;font-weight:700;color:var(--ink2);margin-bottom:10px}
+.step-desc{font-size:14px;color:var(--ink4);line-height:1.7}
+.step-desc strong{color:var(--ink2)}
+
+/* FEATURES BG */
+.features-section{background:var(--bg2)}
+.features-inner{padding:100px 60px;max-width:1200px;margin:0 auto}
+.feature-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:100px}
+.feature-row:last-child{margin-bottom:0}
+.feature-row.reverse{direction:rtl}
+.feature-row.reverse>*{direction:ltr}
+.feature-content{display:flex;flex-direction:column;gap:20px}
+.feature-visual{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.checks{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.check-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink3);font-weight:500}
+.check-icon{width:18px;height:18px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.check-icon svg{width:10px;height:10px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* COMPARISON */
+.comparison-section{padding:100px 60px;max-width:1200px;margin:0 auto;text-align:center}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:52px;border-radius:16px;overflow:hidden;box-shadow:0 0 0 1px rgba(33,33,33,.09),1px 3px 9px rgba(0,0,0,.05)}
+.compare-col{background:white;padding:0}
+.compare-col.active{background:var(--blue)}
+.compare-header{padding:24px 28px;border-bottom:1px solid rgba(33,33,33,.08)}
+.compare-col.active .compare-header{border-color:rgba(255,255,255,.1)}
+.compare-logo{font-family:'Instrument Serif',serif;font-size:18px;color:var(--ink2);font-weight:400}
+.compare-col.active .compare-logo{color:white}
+.compare-items{padding:8px 0}
+.compare-item{display:flex;align-items:center;gap:14px;padding:14px 28px;border-bottom:1px solid rgba(33,33,33,.06)}
+.compare-col.active .compare-item{border-color:rgba(255,255,255,.1)}
+.compare-item:last-child{border-bottom:none}
+.ci-icon{width:20px;height:20px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.ci-check{background:rgba(255,255,255,.15)}
+.ci-check svg{width:11px;height:11px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ci-x{background:rgba(0,0,0,.06)}
+.ci-x svg{width:11px;height:11px;stroke:var(--ink4);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ci-text{font-size:14px;color:var(--ink3)}
+.compare-col.active .ci-text{color:rgba(255,255,255,.85)}
+
+/* REVIEWS */
+.reviews-section{background:var(--bg2)}
+.reviews-inner{padding:100px 60px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.reviews-card{background:white;border:1px solid rgba(33,33,33,.1);border-radius:14px;padding:20px;box-shadow:0 2px 8px rgba(10,0,31,.05)}
+.rc-title{font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:14px}
+.rc-badge{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px;font-weight:700;color:var(--ink2)}
+.rc-badge span{color:var(--ink5);font-weight:400}
+.rc-row{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:7px;padding:8px 10px;margin-bottom:6px}
+.rc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.rc-row-text{font-size:11.5px;color:var(--ink2);flex:1}
+.rc-count{font-size:11px;color:var(--ink2)}
+
+/* PRICING */
+.pricing-section{padding:100px 60px;max-width:1200px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.price-card{background:white;border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;transition:box-shadow .2s}
+.price-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.price-card.featured{background:var(--ink2);border-color:var(--ink2);transform:scale(1.03)}
+.featured-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;white-space:nowrap;letter-spacing:.3px}
+.price-tier{font-size:12px;font-weight:700;color:var(--ink5);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.price-card.featured .price-tier{color:rgba(255,255,255,.5)}
+.price-amount{font-family:'Instrument Serif',serif;font-size:52px;color:var(--ink2);line-height:1}
+.price-card.featured .price-amount{color:white}
+.price-period{font-size:13px;color:var(--ink5);margin-bottom:16px}
+.price-card.featured .price-period{color:rgba(255,255,255,.4)}
+.price-desc{font-size:13px;color:var(--ink4);margin-bottom:24px;line-height:1.6}
+.price-card.featured .price-desc{color:rgba(255,255,255,.5)}
+.price-feats{margin-bottom:28px;display:flex;flex-direction:column;gap:0}
+.price-feat{font-size:13px;padding:9px 0;border-bottom:1px solid var(--border);color:var(--ink2);display:flex;align-items:center;gap:8px}
+.price-card.featured .price-feat{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)}
+.pf-check{width:14px;height:14px;flex-shrink:0;color:var(--green)}
+.price-card.featured .pf-check{color:#6ee7b7}
+.btn-plan{width:100%;padding:13px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--ink2);font-family:'Be Vietnam Pro',sans-serif;transition:all .2s}
+.btn-plan:hover{border-color:var(--ink2);background:var(--ink2);color:white}
+.price-card.featured .btn-plan{background:#e8531a;border-color:#e8531a;color:white}
+.price-card.featured .btn-plan:hover{background:#c94515}
+
+/* TESTIMONIALS */
+.testi-section{background:var(--bg2)}
+.testi-inner{padding:100px 60px;max-width:1200px;margin:0 auto}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.testi-card{background:white;border:1px solid var(--border);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.stars{color:#f59e0b;font-size:13px;letter-spacing:1px}
+.testi-text{font-size:14px;color:var(--ink2);line-height:1.8;font-style:italic;flex:1}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:white;flex-shrink:0}
+.testi-name{font-size:14px;font-weight:700;color:var(--ink2)}
+.testi-role{font-size:12px;color:var(--ink5)}
+
+/* CHANGELOG */
+.changelog-section{padding:100px 60px;max-width:1200px;margin:0 auto}
+.changelog-list{margin-top:36px;display:flex;flex-direction:column;gap:0}
+.changelog-item{display:flex;align-items:flex-start;gap:24px;padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s}
+.changelog-item:hover .cl-title{color:var(--blue)}
+.cl-date{font-size:12px;color:var(--ink5);font-family:'Be Vietnam Pro',sans-serif;white-space:nowrap;padding-top:2px;min-width:80px}
+.cl-body{}
+.cl-title{font-size:16px;font-weight:700;color:var(--ink2);margin-bottom:6px;transition:color .15s}
+.cl-desc{font-size:14px;color:var(--ink4);line-height:1.6}
+
+/* FAQ */
+.faq-section{background:var(--bg2)}
+.faq-inner{padding:100px 60px;max-width:1200px;margin:0 auto}
+.faq-list{margin-top:52px;display:flex;flex-direction:column;gap:0}
+.faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:12px;background:white;overflow:hidden;box-shadow:0 1px 8px rgba(10,0,31,.04)}
+.faq-q{width:100%;padding:20px 24px;background:none;border:none;text-align:left;font-family:'Be Vietnam Pro',sans-serif;font-size:16px;font-weight:500;color:var(--ink2);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q:hover{color:var(--blue)}
+.faq-icon{width:20px;height:20px;flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-a p{padding:0 24px 20px;font-size:15px;color:var(--ink3);line-height:1.7}
+.faq-item.open .faq-a{max-height:200px}
+
+/* CTA */
+.cta-section{padding:120px 60px;text-align:center;background:white}
+.cta-title{font-family:'Instrument Serif',serif;font-size:52px;color:var(--ink2);font-weight:400;letter-spacing:-1px;margin-bottom:16px;line-height:1.1}
+.cta-sub{font-size:18px;color:var(--ink3);margin-bottom:40px}
+.cta-checks{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.cta-check{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink3);font-weight:500}
+.cta-check svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.cta-stats{display:flex;align-items:center;justify-content:center;gap:60px;margin-top:60px;padding-top:60px;border-top:1px solid var(--border)}
+.cta-stat-num{font-family:'Instrument Serif',serif;font-size:32px;color:var(--ink2)}
+.cta-stat-label{font-size:13px;color:var(--ink5);margin-top:4px}
+
+/* FOOTER */
+footer{background:var(--ink2);padding:80px 60px 40px}
+.footer-top{display:grid;grid-template-columns:220px 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:60px}
+.footer-brand{}
+.footer-logo-name{font-family:'Instrument Serif',serif;font-size:22px;color:white;font-weight:400;display:block;margin-bottom:12px}
+.footer-tagline{font-size:14px;color:rgba(255,255,255,.5);line-height:1.6;margin-bottom:24px}
+.footer-col-title{font-size:13px;font-weight:700;color:white;margin-bottom:16px;letter-spacing:.3px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-link{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s}
+.footer-link:hover{color:rgba(255,255,255,.85)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.1);padding-top:32px}
+.footer-copy{font-size:13px;color:rgba(255,255,255,.35)}
+.footer-social{display:flex;gap:16px}
+.social-link{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .15s}
+.social-link:hover{color:rgba(255,255,255,.8)}
+
+/* CHAT MODAL */
+.chat-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;display:none;align-items:flex-end;justify-content:center}
+.chat-overlay.open{display:flex;animation:fadeUp .25s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-modal{background:white;width:100%;max-width:680px;border-radius:20px 20px 0 0;box-shadow:0 -12px 60px rgba(0,0,0,.18);display:flex;flex-direction:column;max-height:85vh}
+.cmo-header{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;background:var(--bg2)}
+.cmo-icon{width:36px;height:36px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.cmo-icon svg{width:18px;height:18px;fill:white}
+.cmo-title{font-size:16px;font-weight:700;color:var(--ink2);font-family:'Instrument Serif',serif}
+.cmo-sub{font-size:12px;color:var(--ink5)}
+.cmo-close{margin-left:auto;width:32px;height:32px;border:1px solid var(--border);background:white;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink5);transition:all .15s}
+.cmo-close:hover{background:var(--ink2);color:white;border-color:var(--ink2)}
+.cmo-msgs{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:14px}
+.cmo-msg-ai{background:var(--bg2);border-radius:14px 14px 14px 4px;padding:13px 16px;font-size:14px;line-height:1.7;color:var(--ink2);max-width:88%}
+.cmo-msg-user{background:var(--blue);border-radius:14px 14px 4px 14px;padding:13px 16px;font-size:14px;line-height:1.7;color:white;max-width:80%;align-self:flex-end}
+.typing-dots{display:flex;gap:5px;padding:14px 18px;background:var(--bg2);border-radius:14px;width:fit-content}
+.typing-dots span{width:7px;height:7px;background:var(--ink5);border-radius:50%;animation:tdot 1.2s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(.7);opacity:.4}40%{transform:scale(1);opacity:1}}
+.cmo-suggestions{padding:0 24px 12px;display:flex;gap:8px;flex-wrap:wrap}
+.cmo-sug{background:white;border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:12px;color:var(--ink3);cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:all .15s;font-weight:500}
+.cmo-sug:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+.cmo-input-area{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;background:var(--bg2)}
+.cmo-input{flex:1;border:1.5px solid var(--border);border-radius:10px;padding:11px 16px;font-size:14px;font-family:'Be Vietnam Pro',sans-serif;outline:none;background:white;transition:border-color .15s}
+.cmo-input:focus{border-color:var(--blue)}
+.cmo-send{background:var(--blue);color:white;border:none;border-radius:10px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:opacity .15s;white-space:nowrap}
+.cmo-send:hover{opacity:.85}
+.cmo-send:disabled{opacity:.4;cursor:not-allowed}
+
+/* FEATURE VISUAL MOCKS */
+.fv-citations{padding:20px;font-size:11px;min-height:260px}
+.fv-doc-title{font-size:14px;font-weight:700;color:var(--ink2);margin-bottom:16px}
+.fv-para{font-size:12px;line-height:1.8;color:var(--ink2)}
+.fv-search{padding:20px;min-height:260px}
+.fv-search-bar{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:12px;background:white}
+.fv-search-bar input{border:none;outline:none;flex:1;font-size:13px;font-family:'Be Vietnam Pro',sans-serif;color:var(--ink3)}
+.fv-search-btn{background:rgba(2,9,10,.45);color:white;border:none;border-radius:6px;padding:5px 12px;font-size:11px;font-weight:500;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif}
+.fv-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.fv-tag{background:white;border:1px solid var(--border);border-radius:10px;padding:3px 9px;font-size:10px;color:var(--ink4);font-weight:500;display:flex;align-items:center;gap:4px}
+.fv-results{display:flex;flex-direction:column;gap:10px}
+.fv-result{background:white;border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+.fv-result-title{font-size:11.5px;font-weight:600;color:var(--ink2);margin-bottom:4px}
+.fv-result-meta{font-size:10px;color:var(--ink5)}
+.fv-result-journal{color:var(--green);font-weight:500}
+
+/* COLLAB VISUAL */
+.fv-collab{padding:24px;font-size:11px;min-height:260px;position:relative}
+.collab-title{font-size:18px;font-weight:700;color:var(--ink2);margin-bottom:16px}
+.collab-para{font-size:12px;line-height:1.8;color:var(--ink2);margin-bottom:10px}
+.collab-comments{border-left:1px solid var(--border);padding-left:16px;margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.cc-item{display:flex;gap:8px}
+.cc-avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:white;flex-shrink:0;margin-top:1px}
+.cc-body{}
+.cc-name{font-size:10px;font-weight:700;color:var(--ink2)}
+.cc-text{font-size:10.5px;color:var(--ink3);line-height:1.5;margin-top:2px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .hero{padding:80px 20px 60px}
+  .hero h1{font-size:40px}
+  .section,.pricing-section,.changelog-section,.comparison-section,.cta-section{padding:60px 20px}
+  .features-inner,.reviews-inner,.testi-inner,.faq-inner,.footer-top{padding:60px 20px}
+  .steps-grid,.pricing-grid,.testi-grid{grid-template-columns:1fr}
+  .compare-grid,.feature-row,.reviews-inner{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .hero-mockup{display:none}
+  .price-card.featured{transform:none}
+  .trust-bar{padding:16px 20px}
+  .trust-inner{flex-direction:column;gap:12px;align-items:flex-start}
+  .cta-stats{flex-direction:column;gap:32px}
+  footer{padding:60px 20px 32px}
+}
+</style>
+</head>
+<body>
+
+<!-- CHAT MODAL -->
+<div class="chat-overlay" id="chatOverlay" onclick="closeChatOverlay(event)">
+  <div class="chat-modal">
+    <div class="cmo-header">
+      <div class="cmo-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div>
+        <div class="cmo-title">PaperPilot AI</div>
+        <div class="cmo-sub">Your research assistant · Always online</div>
+      </div>
+      <button class="cmo-close" onclick="closeChat()">✕</button>
+    </div>
+    <div class="cmo-msgs" id="chatMsgs"></div>
+    <div class="cmo-suggestions" id="chatSugs">
+      <button class="cmo-sug" onclick="sendSug('How does PaperPilot help with literature reviews?')">📚 Literature Reviews</button>
+      <button class="cmo-sug" onclick="sendSug('What citation styles are supported?')">🔗 Citation Styles</button>
+      <button class="cmo-sug" onclick="sendSug('Tell me about the ₹259 Student plan')">💰 ₹259 Plan</button>
+      <button class="cmo-sug" onclick="sendSug('How is PaperPilot different from ChatGPT?')">⚡ vs ChatGPT</button>
+    </div>
+    <div class="cmo-input-area">
+      <input class="cmo-input" id="chatInput" placeholder="Ask anything about PaperPilot AI…" onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button class="cmo-send" id="sendBtn" onclick="sendChat()">Send ↗</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <span class="logo-name">PaperPilot AI</span>
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#howitworks">How it works</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="btn-ghost" onclick="openChat('Help me log in to PaperPilot AI')">Log In</a>
+    <a href="#" class="btn-primary" onclick="openChat('I want to start writing for free on PaperPilot AI. How do I begin?')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      Start writing
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">India's AI Research Assistant</div>
+  <h1>Write Research Papers<br><em>10x Faster</em> with AI</h1>
+  <p class="hero-sub">PaperPilot AI is the intelligent workspace where researchers read, write, and cite — with every claim traceable to a verified source.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-hero" onclick="openChat('How do I get started with PaperPilot AI for free?')">
+      Start writing <span>– it's free</span>
+    </a>
+  </div>
+  <div class="hero-proof">
+    <div class="avatar-stack">
+      <div class="avatar">P</div>
+      <div class="avatar">R</div>
+      <div class="avatar">A</div>
+    </div>
+    &nbsp;Loved by <strong>50,000+</strong> Indian researchers &nbsp;·&nbsp; <strong>4.9★</strong> rating
+  </div>
+
+  <!-- MOCKUP -->
+  <div class="hero-mockup">
+    <div class="mockup-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <div class="mockup-title">Maximum Deadlift Capacity of Elite Sprinters — PaperPilot AI</div>
+    </div>
+    <div class="mockup-body">
+      <div class="mockup-sidebar">
+        <div class="mockup-sidebar-title">Library</div>
+        <div class="sidebar-search">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Search 5,032 sources…
+        </div>
+        <div class="sidebar-tabs">
+          <span class="sidebar-tab-active">Sources</span>
+          <span class="sidebar-tab">Collections</span>
+        </div>
+        <div class="sidebar-paper">
+          <div class="paper-meta">
+            <span class="paper-badge" style="background:#fef3c7;color:#92400e">IF 15.00</span>
+            <span class="paper-badge" style="background:#fff7ed;color:#c2410c">OPEN ACCESS</span>
+          </div>
+          <div class="paper-title">Maximal deadlift strength and its correlation with sprint velocity</div>
+          <div class="paper-authors">Schiemann, Warneke, Conan</div>
+          <div class="paper-journal">J. Strength &amp; Conditioning · 2024</div>
+          <div class="paper-actions"><span>❝ Cite</span><span>ℹ Details</span><span>📄 PDF</span></div>
+        </div>
+        <div class="sidebar-paper">
+          <div class="paper-meta">
+            <span class="paper-badge" style="background:#fef3c7;color:#92400e">IF 15.00</span>
+          </div>
+          <div class="paper-title">Post-activation performance enhancement in elite athletes</div>
+          <div class="paper-authors">Abade, Sánchez, Pareja-Blanco</div>
+          <div class="paper-journal">Sports Medicine · 2023</div>
+          <div class="paper-actions"><span>❝ Cite</span><span>ℹ Details</span></div>
+        </div>
+      </div>
+      <div class="mockup-main">
+        <div class="mockup-toolbar">
+          <span style="font-weight:700">B</span>
+          <span style="font-style:italic">I</span>
+          <span style="text-decoration:underline">U</span>
+          <div class="toolbar-sep"></div>
+          <span>⊕ Cite</span>
+          <div class="toolbar-sep"></div>
+          <span>Autocomplete <span style="display:inline-block;width:22px;height:12px;background:var(--blue);border-radius:6px;vertical-align:middle;margin-left:4px;position:relative"><span style="position:absolute;right:2px;top:2px;width:8px;height:8px;background:white;border-radius:50%"></span></span></span>
+        </div>
+        <h2>Abstract</h2>
+        <p class="mockup-text">This investigation quantifies elite sprinters' maximal deadlift capacity, showing that elite cohorts lift up to <span class="highlight-text">three times their body weight</span> and underscoring the role of lower-body strength in sprint performance <span class="cite-link">(Schiemann et al., 2024)</span>. This association holds across athletic populations, substantiating its contribution to explosive power <span class="cite-link">(Conan &amp; DeBeliso, 2020)</span>. Maximal lower-extremity strength also enhances jumping and sprint performance in team sports <span class="cite-link">(Warneke et al., 2022)</span>.</p>
+        <h2 style="font-size:16px;margin-top:8px">References</h2>
+        <div style="font-size:11px;line-height:1.7;color:var(--ink2)">
+          Schiemann, S., et al. (2024). <em>Journal of Strength and Conditioning Research</em>, 38(4), 721–733.<br>
+          Seitz, L. B., et al. (2014). <em>Sports Medicine</em>, 44(12), 1693–1702.
+        </div>
+        <div style="font-size:10px;color:var(--ink5);margin-top:auto;text-align:right">2,051 words</div>
+      </div>
+      <div class="mockup-right">
+        <div class="chat-header">
+          <div class="chat-title">AI Chat</div>
+        </div>
+        <div class="chat-msgs" style="flex:1;overflow:hidden;padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+          <div class="chat-bubble-ai">What are the training implications for coaches?</div>
+          <div class="chat-bubble-user" style="font-size:10px">Training Implications</div>
+          <div class="chat-bubble-ai" style="font-size:10px">Based on your sources, coaches should prioritise maximal strength development. Deadlift 1RM ≥ 2× body weight correlates strongly with sprint velocity improvements <span style="color:#2563eb">(Schiemann, 2024)</span>.</div>
+        </div>
+        <div class="chat-pills">
+          <span class="pill">📎 Add context</span>
+          <span class="pill">📄 Current doc ✕</span>
+        </div>
+        <div class="chat-input-area">
+          <div class="chat-input-box">
+            <span style="font-size:10.5px;color:var(--ink5)">Ask AI, use @ to mention PDFs…</span>
+            <div style="width:20px;height:20px;border-radius:50%;background:rgba(50,61,214,.5);display:flex;align-items:center;justify-content:center">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-label">Trusted by universities &amp; institutions across India</div>
+    <div class="trust-logos">
+      <span class="trust-logo">IIT Delhi</span>
+      <span class="trust-logo">IIT Bombay</span>
+      <span class="trust-logo">AIIMS</span>
+      <span class="trust-logo">BHU</span>
+      <span class="trust-logo">BITS Pilani</span>
+      <span class="trust-logo">Jadavpur</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section" id="howitworks">
+  <div class="section-label">How it works</div>
+  <div class="section-title">From blank page to cited paper<br>in three steps</div>
+  <div class="section-sub">No more struggling with blank pages. PaperPilot AI guides you through every step of the research writing process.</div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Import your sources</div>
+      <p class="step-desc">Drag in PDFs, import from <strong>Zotero</strong> or <strong>Mendeley</strong>, or let PaperPilot search <strong>200M+ papers</strong>. Your library is ready in seconds.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Write alongside AI</div>
+      <p class="step-desc">Smart AI autocomplete suggests sentences grounded in real papers. Suggestions are cited and can be traced to the exact source.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Cite, review, export</div>
+      <p class="step-desc">One-click inline citations in <strong>2,600+ styles</strong> including APA, MLA, IEEE. Export to .docx, PDF, or LaTeX. Ready for any Indian or international journal.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CORE FEATURES -->
+<div class="features-section" id="features">
+  <div class="features-inner">
+    <div class="section-label">Core Features</div>
+    <div class="section-title" style="max-width:600px">Built for serious research writing</div>
+    <div class="section-sub">Not a chatbot with citations bolted on. A purpose-built writing environment where AI, sources, and your argument work together.</div>
+
+    <!-- Feature 1 -->
+    <div class="feature-row" style="margin-top:60px">
+      <div class="feature-content">
+        <div class="section-label">Traceable Citations</div>
+        <div class="section-title" style="font-size:34px">Claims linked to the exact page &amp; paragraph</div>
+        <p style="font-size:15px;color:var(--ink3);line-height:1.7">PaperPilot connects every AI-suggested sentence to the precise location in your source PDF — verify in one click. Choose from <strong>2,600+ citation styles</strong> including APA 7th, Chicago, Harvard, IEEE, Vancouver.</p>
+        <div class="checks">
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>APA, MLA, IEEE, Harvard, Vancouver, Chicago</div>
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>UGC &amp; Shodhganga formats for Indian submissions</div>
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>DOI verification &amp; anti-hallucination checks</div>
+        </div>
+        <a href="#" class="btn-primary" style="width:fit-content;margin-top:8px" onclick="openChat('Tell me about citation styles supported in PaperPilot AI')">Try it free →</a>
+      </div>
+      <div class="feature-visual">
+        <div class="fv-citations">
+          <div class="fv-doc-title">Literature Review — CRISPR-Cas9 in Oncology</div>
+          <p class="fv-para">CRISPR-Cas9 has emerged as a revolutionary genome editing tool with significant therapeutic applications in oncology. Recent studies by <span class="highlight-text">Zhang et al. (2023)</span> demonstrated targeted deletion of oncogenes in leukemia cell lines achieving <strong>94% efficiency</strong> <span class="cite-link">(Zhang et al., 2023)</span>. The system's programmability offers unprecedented precision compared to previous gene-editing technologies <span class="cite-link">(Ran et al., 2023)</span>.</p>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+            <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:8px">References</div>
+            <div style="font-size:10px;line-height:1.7;color:var(--ink4)">
+              <div style="padding-left:18px;text-indent:-18px">Zhang, X., et al. (2023). CRISPR-Cas9-mediated oncogene targeting. <em>Nature Medicine</em>, 29(4), 112–124.</div>
+              <div style="padding-left:18px;text-indent:-18px">Ran, F. A., et al. (2023). Genome engineering using CRISPR-Cas9. <em>Cell</em>, 154(6), 1380–1389.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="feature-row reverse">
+      <div class="feature-content">
+        <div class="section-label">Research Discovery</div>
+        <div class="section-title" style="font-size:34px">Search 200M+ papers without leaving your editor</div>
+        <p style="font-size:15px;color:var(--ink3);line-height:1.7">Semantic search across our full academic index surfaces relevant papers even when you don't know the exact keywords. Access PubMed, arXiv, Semantic Scholar, and CrossRef in one place.</p>
+        <div class="checks">
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>PubMed, arXiv, Semantic Scholar, CrossRef</div>
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>10M+ full-text Open Access papers</div>
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Import from Zotero &amp; Mendeley instantly</div>
+        </div>
+        <a href="#" class="btn-primary" style="width:fit-content;margin-top:8px" onclick="openChat('How does paper search work in PaperPilot AI?')">Search papers →</a>
+      </div>
+      <div class="feature-visual">
+        <div class="fv-search">
+          <div class="fv-search-bar">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a1a1aa" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" value="CRISPR cancer therapy efficacy" placeholder="Search 200M+ academic sources…" readonly>
+            <button class="fv-search-btn">Search</button>
+          </div>
+          <div class="fv-tags">
+            <span style="font-size:10px;color:var(--ink5);margin-right:4px">Across</span>
+            <span class="fv-tag">📚 My library</span>
+            <span class="fv-tag">Semantic Scholar</span>
+            <span class="fv-tag">PubMed</span>
+            <span class="fv-tag">arXiv</span>
+          </div>
+          <div class="fv-results">
+            <div class="fv-result">
+              <div class="fv-result-title">CRISPR-Cas9 applications in cancer therapy: a systematic review</div>
+              <div class="fv-result-meta">Zhang et al. · <span class="fv-result-journal">Nature Medicine</span> · 2024</div>
+            </div>
+            <div class="fv-result">
+              <div class="fv-result-title">Advances in CRISPR-based cancer immunotherapy</div>
+              <div class="fv-result-meta">Kumar et al. · <span class="fv-result-journal">Cell Reports</span> · 2023</div>
+            </div>
+            <div class="fv-result">
+              <div class="fv-result-title">Off-target effects of CRISPR in oncology applications</div>
+              <div class="fv-result-meta">Wang et al. · <span class="fv-result-journal">Nucleic Acids Research</span> · 2023</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature 3 - Collab -->
+    <div class="feature-row">
+      <div class="feature-content">
+        <div class="section-label">Collaborate</div>
+        <div class="section-title" style="font-size:34px">Write together, refine faster</div>
+        <p style="font-size:15px;color:var(--ink3);line-height:1.7">Co-author papers in real time with your supervisor, lab partners, or co-authors. Leave comments, suggest edits, share documents. Say goodbye to emailing Word files.</p>
+        <div class="checks">
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Inline comments &amp; suggestions</div>
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Live real-time collaboration</div>
+          <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Version history &amp; track changes</div>
+        </div>
+        <a href="#" class="btn-primary" style="width:fit-content;margin-top:8px" onclick="openChat('How does collaboration work in PaperPilot AI?')">Start collaborating →</a>
+      </div>
+      <div class="feature-visual">
+        <div class="fv-collab">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div class="collab-title" style="margin-bottom:0;font-size:16px">Systematic Review — PAPE &amp; Sprint Velocity</div>
+            <div style="display:flex">
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(50,61,214,.14);color:var(--blue);font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid white;margin-left:0">PK</div>
+              <div style="width:26px;height:26px;border-radius:50%;background:rgba(20,184,166,.16);color:#0d9488;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid white;margin-left:-6px">Me</div>
+            </div>
+          </div>
+          <p class="collab-para">Post-activation performance enhancement has emerged as a preconditioning strategy for strength-dominant athletes <span class="cite-link">(Seitz et al., 2014)</span>. Evidence suggests maximal deadlift performance predicts sprint velocity across trained cohorts, though reported effect sizes vary widely.</p>
+          <div class="collab-comments">
+            <div class="cc-item">
+              <div class="cc-avatar" style="background:rgba(50,61,214,1)">PK</div>
+              <div class="cc-body">
+                <div class="cc-name">Prof Kim <span style="color:var(--ink5);font-weight:400">12m ago</span></div>
+                <div class="cc-text">Strengthen this claim with Smith (2024)? The effect sizes are more consistent there.</div>
+              </div>
+            </div>
+            <div class="cc-item">
+              <div class="cc-avatar" style="background:#059669">Me</div>
+              <div class="cc-body">
+                <div class="cc-name">You <span style="color:var(--ink5);font-weight:400">5m ago</span></div>
+                <div class="cc-text">Added, plus cross-referenced with Table 3. ✓ Resolved</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY PAPERPILOT -->
+<div class="comparison-section">
+  <div class="section-label">Why PaperPilot</div>
+  <div class="section-title">Not another AI chatbot</div>
+  <p class="section-sub" style="margin:0 auto;text-align:center">There are hundreds of AI tools. Here's what makes PaperPilot different from ChatGPT.</p>
+  <div class="compare-grid">
+    <div class="compare-col active">
+      <div class="compare-header">
+        <div class="compare-logo">PaperPilot AI</div>
+      </div>
+      <div class="compare-items">
+        <div class="compare-item"><div class="ci-icon ci-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ci-text">Every claim tied to your documents with clear references</div></div>
+        <div class="compare-item"><div class="ci-icon ci-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ci-text">Builds arguments strictly from your selected sources</div></div>
+        <div class="compare-item"><div class="ci-icon ci-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ci-text">Structured workspace with outlining and editing tools</div></div>
+        <div class="compare-item"><div class="ci-icon ci-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ci-text">Auto-generated citations in 2,600+ styles</div></div>
+        <div class="compare-item"><div class="ci-icon ci-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><div class="ci-text">India-specific: UGC formats, Shodhganga, CSIR NET</div></div>
+      </div>
+    </div>
+    <div class="compare-col">
+      <div class="compare-header">
+        <div class="compare-logo" style="color:var(--ink4)">Generic AI (ChatGPT etc.)</div>
+      </div>
+      <div class="compare-items">
+        <div class="compare-item"><div class="ci-icon ci-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="ci-text">Trained on large datasets without direct source links</div></div>
+        <div class="compare-item"><div class="ci-icon ci-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="ci-text">Generates content from general knowledge across topics</div></div>
+        <div class="compare-item"><div class="ci-icon ci-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="ci-text">Simple chat UI for quick answers and drafts</div></div>
+        <div class="compare-item"><div class="ci-icon ci-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="ci-text">Citations require manual formatting and checking</div></div>
+        <div class="compare-item"><div class="ci-icon ci-x"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><div class="ci-text">No India-specific academic formats or databases</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS FEATURE -->
+<div class="reviews-section">
+  <div class="reviews-inner">
+    <div>
+      <div class="section-label">New: AI Reviews</div>
+      <div class="section-title" style="font-size:38px">Catch weaknesses before reviewers do</div>
+      <p style="font-size:15px;color:var(--ink3);line-height:1.7;margin-bottom:20px">Reviews analyzes every claim in your paper, cross-references your sources, and flags issues across six categories. Submit with confidence, not anxiety.</p>
+      <p style="font-size:15px;color:var(--ink3);line-height:1.7;margin-bottom:24px">Unverified or speculative claims are the most common cause of peer review rejection. PaperPilot catches them in seconds.</p>
+      <div class="checks">
+        <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Citation analysis</div>
+        <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Academic proofreading</div>
+        <div class="check-item"><div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Inline feedback on every claim</div>
+      </div>
+      <a href="#" class="btn-primary" style="width:fit-content;margin-top:24px" onclick="openChat('Tell me about the AI Reviews feature in PaperPilot')">Learn more about Reviews →</a>
+    </div>
+    <div>
+      <div class="reviews-card">
+        <div class="rc-title">Claim Confidence</div>
+        <div class="rc-badge">9 Suggestions <span></span></div>
+        <div class="rc-row"><div class="rc-dot" style="background:#22c55e"></div><div class="rc-row-text">Misrepresented</div><div class="check-icon"><svg viewBox="0 0 24 24" style="width:10px;height:10px"><polyline points="20 6 9 17 4 12" stroke="white" fill="none" stroke-width="2.5"/></svg></div></div>
+        <div class="rc-row"><div class="rc-dot" style="background:#ff5252"></div><div class="rc-row-text">Contradicted</div><div class="rc-count">3</div></div>
+        <div class="rc-row"><div class="rc-dot" style="background:#ff5252"></div><div class="rc-row-text">Unsupported</div><div class="rc-count">4</div></div>
+        <div class="rc-row"><div class="rc-dot" style="background:#facc15"></div><div class="rc-row-text">Weakly Supported</div><div class="rc-count">2</div></div>
+        <div class="rc-row"><div class="rc-dot" style="background:#22c55e"></div><div class="rc-row-text">Overstated</div><div class="check-icon"><svg viewBox="0 0 24 24" style="width:10px;height:10px"><polyline points="20 6 9 17 4 12" stroke="white" fill="none" stroke-width="2.5"/></svg></div></div>
+        <div style="height:1px;background:var(--bg3);margin:14px 0"></div>
+        <div class="rc-title">Proofread</div>
+        <div class="rc-badge">18 Suggestions <span></span></div>
+        <div class="rc-row"><div class="rc-dot" style="background:var(--blue)"></div><div class="rc-row-text" style="font-weight:700">Word Choice</div><div style="background:var(--blue-light);color:var(--blue);font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px">6 Pending</div></div>
+        <div class="rc-row"><div class="rc-dot" style="background:#facc15"></div><div class="rc-row-text" style="font-weight:700">Grammar</div><div style="background:#fffbeb;color:#92400e;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px">4 Pending</div></div>
+        <div class="rc-row"><div class="rc-dot" style="background:#ef4444"></div><div class="rc-row-text" style="font-weight:700">Clarity</div><div style="background:#fef2f2;color:#991b1b;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px">6 Pending</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-section">
+  <div class="testi-inner">
+    <div class="section-label">Loved by Researchers</div>
+    <div class="section-title">Trusted by researchers<br>across India</div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"PaperPilot AI saved me 3 weeks on my PhD literature review. The citations were accurate and the writing quality is genuinely academic-grade."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--blue)">P</div>
+          <div><div class="testi-name">Priya Sharma</div><div class="testi-role">PhD Scholar, IIT Delhi</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"The India-specific templates for UGC formatting are a game changer. No other tool offers this. Worth every rupee at ₹259/month."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#059669">R</div>
+          <div><div class="testi-name">Rahul Mishra</div><div class="testi-role">MSc Biotechnology, BHU</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"I use it for my MBBS research projects. The PDF chat feature is unbelievably useful — I can actually understand complex papers now."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#7c3aed">A</div>
+          <div><div class="testi-name">Ananya Patel</div><div class="testi-role">MBBS Final Year, AIIMS</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section" id="pricing">
+  <div class="section-label">Pricing</div>
+  <div class="section-title">Affordable for every<br>Indian researcher</div>
+  <p class="section-sub">Cheaper than a single photocopy session at your university library.</p>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-tier">Free</div>
+      <div class="price-amount">₹0</div>
+      <div class="price-period">forever</div>
+      <div class="price-desc">Perfect to get started and explore PaperPilot AI.</div>
+      <div class="price-feats">
+        <div class="price-feat"><span class="pf-check">✓</span>Limited AI writing (5,000 words)</div>
+        <div class="price-feat"><span class="pf-check">✓</span>3 PDF uploads</div>
+        <div class="price-feat"><span class="pf-check">✓</span>Basic citations</div>
+        <div class="price-feat"><span class="pf-check">✓</span>Limited AI chat</div>
+      </div>
+      <button class="btn-plan" onclick="openChat('I want to get started with the free plan of PaperPilot AI')">Get Started Free</button>
+    </div>
+    <div class="price-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="price-tier">Student</div>
+      <div class="price-amount">₹259</div>
+      <div class="price-period">/month · UPI accepted</div>
+      <div class="price-desc">Everything a student or PhD scholar needs.</div>
+      <div class="price-feats">
+        <div class="price-feat"><span class="pf-check">✓</span>Unlimited AI writing</div>
+        <div class="price-feat"><span class="pf-check">✓</span>100 PDF uploads</div>
+        <div class="price-feat"><span class="pf-check">✓</span>AI literature review</div>
+        <div class="price-feat"><span class="pf-check">✓</span>All citation styles</div>
+        <div class="price-feat"><span class="pf-check">✓</span>Export DOCX + PDF</div>
+      </div>
+      <button class="btn-plan" onclick="openChat('I want to subscribe to the ₹259 Student plan. How do I pay via UPI?')">Start ₹259 Plan</button>
+    </div>
+    <div class="price-card">
+      <div class="price-tier">Researcher</div>
+      <div class="price-amount">₹599</div>
+      <div class="price-period">/month</div>
+      <div class="price-desc">For professors, professionals and research labs.</div>
+      <div class="price-feats">
+        <div class="price-feat"><span class="pf-check">✓</span>Everything in Student</div>
+        <div class="price-feat"><span class="pf-check">✓</span>Unlimited storage</div>
+        <div class="price-feat"><span class="pf-check">✓</span>Team collaboration</div>
+        <div class="price-feat"><span class="pf-check">✓</span>Journal templates</div>
+        <div class="price-feat"><span class="pf-check">✓</span>AI peer review simulator</div>
+      </div>
+      <button class="btn-plan" onclick="openChat('Tell me about the ₹599 Researcher plan features')">Start ₹599 Plan</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGELOG -->
+<div class="changelog-section">
+  <div class="section-label">What's New</div>
+  <div class="section-title">New features &amp; improvements</div>
+  <p class="section-sub">We release improvements constantly. Here's the most recent.</p>
+  <div class="changelog-list">
+    <a href="#" class="changelog-item" onclick="openChat('Tell me about the AI Peer Review feature in PaperPilot')">
+      <div class="cl-date">May 6, 2025</div>
+      <div class="cl-body"><div class="cl-title">AI Peer Review Simulator</div><div class="cl-desc">Simulate a peer review and get pointed, inline feedback to help refine your paper before submission.</div></div>
+    </a>
+    <a href="#" class="changelog-item" onclick="openChat('What is the Tone of Voice Review feature?')">
+      <div class="cl-date">Apr 22, 2025</div>
+      <div class="cl-body"><div class="cl-title">Tone of Voice Review</div><div class="cl-desc">Keeping a consistent academic voice across a 10,000-word thesis is challenging. Now PaperPilot reviews your writing against preset or custom tones from papers in your library.</div></div>
+    </a>
+    <a href="#" class="changelog-item" onclick="openChat('Tell me about Smart LaTeX Equation support in PaperPilot')">
+      <div class="cl-date">Apr 8, 2025</div>
+      <div class="cl-body"><div class="cl-title">Smart LaTeX Equations</div><div class="cl-desc">Writing LaTeX equations by hand is painful — now you can describe your equation or upload an image from an existing PDF.</div></div>
+    </a>
+    <a href="#" class="changelog-item" onclick="openChat('What are the latest AI chat improvements in PaperPilot?')">
+      <div class="cl-date">Mar 11, 2025</div>
+      <div class="cl-body"><div class="cl-title">AI Chat Upgrade</div><div class="cl-desc">Better AI Chat performance with faster responses and improved multi-document context understanding.</div></div>
+    </a>
+    <a href="#" class="changelog-item" onclick="openChat('What UGC and Indian academic formats does PaperPilot support?')">
+      <div class="cl-date">Feb 20, 2025</div>
+      <div class="cl-body"><div class="cl-title">India-Specific Formats</div><div class="cl-desc">UGC thesis formatting, Shodhganga submission templates, CSIR NET preparation tools, and Indian journal format presets.</div></div>
+    </a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">Frequently asked questions</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does PaperPilot AI plagiarize? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>PaperPilot AI strives to generate content that is 100% plagiarism-free. When PaperPilot generates a sentence that derives from a source, a citation to attribute the source is automatically added. All AI suggestions are grounded in your uploaded documents and verified academic databases.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does PaperPilot work with Indian university formats? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes! PaperPilot AI has built-in support for UGC thesis formats, Shodhganga submission guidelines, CSIR NET paper formats, and templates for major Indian journals. We're specifically built for Indian academic researchers.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I pay via UPI or Indian payment methods? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Absolutely. PaperPilot AI accepts all major Indian payment methods including UPI (PhonePe, GPay, Paytm), net banking, credit/debit cards, and EMI options. We're priced in rupees for Indian researchers.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How accurate are the citations? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Citations in PaperPilot are grounded in verified academic databases — PubMed, Semantic Scholar, arXiv, and CrossRef. DOI verification is built-in, and every citation can be traced back to the original source. Re-indexing happens every 48 hours for the latest papers.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is there mobile support? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes, PaperPilot AI is designed to work across mobile and desktop devices. The web interface is fully responsive, and we're working on dedicated iOS and Android apps.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Which AI models does PaperPilot use? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>We use the latest frontier AI models, selecting different models for different tasks based on performance. We constantly test and evaluate new models to ensure the highest quality academic writing assistance.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="section-label">Get Started</div>
+  <div class="cta-title">Make progress on your<br>greatest work, today</div>
+  <p class="cta-sub">Write your first paper with PaperPilot AI today and never look back.</p>
+  <div class="cta-checks">
+    <div class="cta-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Start for free</div>
+    <div class="cta-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>No credit card required</div>
+    <div class="cta-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Cancel anytime</div>
+  </div>
+  <a href="#" class="btn-hero" onclick="openChat('I want to start writing for free on PaperPilot AI. How do I begin?')">
+    Start writing <span>– it's free</span>
+  </a>
+  <div class="cta-stats">
+    <div><div class="cta-stat-num">50,000+</div><div class="cta-stat-label">Researchers in India</div></div>
+    <div><div class="cta-stat-num">200+</div><div class="cta-stat-label">Colleges &amp; Universities</div></div>
+    <div><div class="cta-stat-num">10L+</div><div class="cta-stat-label">Papers Written</div></div>
+    <div><div class="cta-stat-num">4.9★</div><div class="cta-stat-label">Average Rating</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo-name">PaperPilot AI</span>
+      <p class="footer-tagline">India's intelligent research assistant for students, scholars &amp; professors.</p>
+      <a href="#" class="btn-primary" onclick="openChat('I want to start writing for free on PaperPilot AI')">Start writing</a>
+    </div>
+    <div>
+      <div class="footer-col-title">Use Cases</div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">For PhD Scholars</a>
+        <a href="#" class="footer-link">For Professors</a>
+        <a href="#" class="footer-link">For Research Labs</a>
+        <a href="#" class="footer-link">Literature Review Generator</a>
+        <a href="#" class="footer-link">UGC Thesis Formatter</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Tools</div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">AI Essay Writer</a>
+        <a href="#" class="footer-link">Citation Generator</a>
+        <a href="#" class="footer-link">Paraphrasing Tool</a>
+        <a href="#" class="footer-link">AI Summarizer</a>
+        <a href="#" class="footer-link">Abstract Generator</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Blog</a>
+        <a href="#" class="footer-link">Changelog</a>
+        <a href="#" class="footer-link">Careers</a>
+        <a href="#" class="footer-link">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Legal</div>
+      <div class="footer-links">
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+        <a href="#" class="footer-link">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">Copyright © 2025 PaperPilot AI · Made in India 🇮🇳 · For Indian Researchers</div>
+    <div class="footer-social">
+      <a href="#" class="social-link">Twitter</a>
+      <a href="#" class="social-link">LinkedIn</a>
+      <a href="#" class="social-link">YouTube</a>
+      <a href="#" class="social-link">Discord</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============ CHAT SYSTEM ============
+const SYSTEM_PROMPT = `You are PaperPilot AI, a helpful AI research assistant built specifically for Indian students, PhD scholars, and researchers. You help with:
+- Writing research papers, abstracts, introductions, literature reviews, conclusions
+- Generating citations in APA, MLA, IEEE, Harvard, Vancouver, Chicago, UGC formats
+- Chatting with PDF research papers to extract insights
+- UGC thesis formatting and Shodhganga submission guidelines
+- CSIR NET preparation and Indian journal templates
+- AI peer review simulation and academic proofreading
+Keep answers concise but helpful. You are enthusiastic, knowledgeable, and supportive of Indian academic researchers.
+Plans: Free (₹0), Student (₹259/month, UPI accepted), Researcher (₹599/month).
+Always respond in English unless the user writes in another language. Be warm and encouraging.`;
+
+let history = [];
+
+function openChat(msg) {
+  document.getElementById('chatOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (history.length === 0) {
+    addAIMsg("Namaste! 🙏 I'm PaperPilot AI — your research companion. I help with writing, citations, literature reviews, PDF chat, and more. <strong>What are you working on today?</strong>");
+  }
+  if (msg) setTimeout(() => sendPrompt(msg), 300);
+}
+
+function closeChat() {
+  document.getElementById('chatOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeChatOverlay(e) {
+  if (e.target === document.getElementById('chatOverlay')) closeChat();
+}
+
+function addAIMsg(html) {
+  const msgs = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'cmo-msg-ai';
+  d.innerHTML = html;
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+  return d;
+}
+
+function addUserMsg(text) {
+  const msgs = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'cmo-msg-user';
+  d.textContent = text;
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMsgs');
+  const d = document.createElement('div');
+  d.className = 'typing-dots';
+  d.id = 'typing';
+  d.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function hideTyping() {
+  const el = document.getElementById('typing');
+  if (el) el.remove();
+}
+
+async function sendPrompt(message) {
+  if (!message.trim()) return;
+  document.getElementById('chatSugs').style.display = 'none';
+  addUserMsg(message);
+  history.push({role: 'user', content: message});
+  document.getElementById('sendBtn').disabled = true;
+  showTyping();
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: history
+      })
+    });
+    const data = await res.json();
+    hideTyping();
+    const reply = data.content?.[0]?.text || "Sorry, I couldn't get a response. Please try again!";
+    addAIMsg(reply.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>'));
+    history.push({role: 'assistant', content: reply});
+  } catch(e) {
+    hideTyping();
+    addAIMsg("Oops! Something went wrong. Please check your connection and try again.");
+  }
+  document.getElementById('sendBtn').disabled = false;
+  document.getElementById('chatInput').focus();
+}
+
+function sendChat() {
+  const inp = document.getElementById('chatInput');
+  const msg = inp.value.trim();
+  if (!msg) return;
+  inp.value = '';
+  sendPrompt(msg);
+}
+
+function sendSug(text) {
+  document.getElementById('chatSugs').style.display = 'none';
+  sendPrompt(text);
+}
+
+// ============ FAQ ============
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ============ SCROLL ANIMATIONS ============
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, {threshold: 0.1});
+
+document.querySelectorAll('.step-card, .testi-card, .price-card, .changelog-item, .compare-col, .feature-row').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(28px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
